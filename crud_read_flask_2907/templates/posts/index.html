@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Example application</title>
+  </head>
+  <style>
+    .btn {
+        display: inline-block;
+        padding: 5px 20px;
+        background-color: #007BFF;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .btn:hover {
+        background-color: #0056b3;
+    }
+    </style>
+  <body>
+<!-- BEGIN (write your solution here) -->
+  <ul>
+  {% for post in posts %}
+  <li><a href="/posts/{{ post['slug'] }}">{{ post['title'] }}</a></li> <!-- сюда нужно будет вставить ссылку не конкретный пост -->
+  {% endfor %}
+  </ul>
+  <div>
+      <a href="/posts?page={{ page - 1 if page > 1 else 1 }}" class="btn {{ 'disabled' if page == 1 }}">Назад</a>
+      <a href="/posts?page={{ page + 1 if page < total_pages else total_pages }}" class="btn {{ 'disabled' if page == total_pages }}">Вперед</a>
+  </div>
+<!-- END -->
+  </body>
+</html>
